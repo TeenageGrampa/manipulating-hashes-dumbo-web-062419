@@ -13,11 +13,14 @@ def first_challenge
     }
   }
 
-  contacts["Freddy Mercury"][:favorite_icecream_flavors]
-    favorite_icecream_flavors.delete_if? {|key, value| value == "strawberry"}
-        
-
-
+    contacts.each do |person, data|
+       data.each do |key, value|
+          if key == :favorite_icecream_flavors
+              value.delete_if do |flavor|
+              flavor == "strawberry"
+          end
+      end
+    end
   #remember to return your newly altered contacts hash!
   contacts
 end
